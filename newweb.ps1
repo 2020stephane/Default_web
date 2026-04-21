@@ -22,7 +22,7 @@ if (Test-Path $Source) {
    New-Item -Path "$Destination\js\$($NomRepertoire).js" -ItemType File
    Set-Location -Path $Destination
    Remove-Item ".\newweb.ps1"
-   code $Destination -r
+
 
 $ContenuHtml = @"
        <!--===========================================================
@@ -34,10 +34,10 @@ $ContenuHtml = @"
          <!DOCTYPE html>
          <html lang="fr">
             <head>
-                <meta charset=\"UTF-8\">
-                <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <title>$NomRepertoire</title>
-                <link rel=\"stylesheet\" href=\"$NomRepertoire.css\">
+                <link rel="stylesheet" href="/css/$NomRepertoire.css">
             </head>
             <body>
                 <header>
@@ -45,7 +45,7 @@ $ContenuHtml = @"
                 <main>
 
                 </main>
-         <script src=\"$NomRepertoire.js\"></script>
+         <script src="/js/$NomRepertoire.js"></script>
          <footer>
          </footer>
          </body>
@@ -53,3 +53,4 @@ $ContenuHtml = @"
 "@
 
 $ContenuHtml | Out-File -FilePath "$Destination\html\$($NomRepertoire).html" -Encoding utf8
+code $Destination -r
